@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+    <h1>A paper-rock-scissors game!</h1>
+    <h2>To play properly use the console ( ctrl + shift + I)</h2>
+  <script>
+      let options = ['rock','paper','scissors'];
+function computer(){
+    let i = Math.floor(Math.random() * 6);
+    return options[i];
+}
+let winner;
+function play(playerPlay,computerPlay){
+
+    if (playerPlay == computerPlay) {
+            console.log('Draw!');
+        }
+    else if (playerPlay == 'rock'){
+            if (computerPlay == 'paper'){
+                console.log(`Fail! ${computerPlay} beats ${playerPlay}`);
+                winner = 'computer';
+            }
+            else if (computerPlay == 'scissors'){
+                console.log(`Win! ${playerPlay} beats ${computerPlay}`);
+                winner = 'player';
+            }
+    
+    }
+    else if (playerPlay == 'paper'){
+            if (computerPlay == 'scissors'){
+                console.log(`Fail! ${computerPlay} beats ${playerPlay}`);
+                winner = 'computer'; 
+            }
+            else if (computerPlay == 'rock'){
+                console.log(`Win! ${playerPlay} beats ${computerPlay}`);
+                winner = 'player';
+            }
+    }
+    else if (playerPlay == 'scissors'){
+            if (computerPlay == 'rock'){
+                console.log(`Fail! ${computerPlay} beats ${playerPlay}`);
+                winner = 'computer';
+            }
+            else if (computerPlay == 'paper'){
+                console.log(`Win! ${playerPlay} beats ${computerPlay}`);
+                winner = 'player';
+            }
+    }
+//    console.log(playerPlay);
+//    console.log(winner);
+    return winner;
+}
+function game(){
+    let winnerData;
+    let playerPoints = 0;
+    let computerPoints = 0;
+    for (i = 0; i < 5; i++ ){
+        let playerChoice = prompt("Choose your option"," ");
+        playerPlay = playerChoice.toLowerCase();
+        if (playerPlay != 'rock' && playerPlay != 'paper' && playerPlay != 'scissors'){
+            alert('Invalid choice! You have to start over');
+            i = 0;
+            continue;
+        }
+        let computerPlay = computer();
+        play(playerPlay,computerPlay);
+        if (winner == 'player'){
+            playerPoints ++;
+        }
+        else {
+            computerPoints ++;
+        }
+        if (playerPlay == computerPlay) {
+            console.log('No one won!');
+        }
+        else {
+        console.log(`${winner} won this round!`);
+        }
+        console.log(`You won ${playerPoints} times and the computer won ${computerPoints}`);
+
+    }
+    if (computerPoints > playerPoints){
+        winnerData = 'The computer won!';
+    }
+    else if (computerPoints == playerPoints){
+        winnerData = 'It\'s a draw!';
+    }
+    else {
+        winnerData = 'The player won!';
+    }
+    console.log(winnerData);
+    return winnerData;
+}
+game();
+  </script>
+</body>
+</html>
