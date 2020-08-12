@@ -71,12 +71,13 @@ function play(playerPlay, computerPlay){
                 playerScore += 1;
             }
     }
-    choicesPar.textContent = `Your choice: ${playerPlay}  Computer\'s choice: ${computerPlay}`;
+    choicesPar.textContent = `Your choice: ${playerPlay} \xa0\xa0\xa0 Computer\'s choice: ${computerPlay}`;
     scores = [playerScore, computerScore];
-    winnerPar.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+    winnerPar.textContent = `Player: ${playerScore},\xa0 Computer: ${computerScore}`;
     return scores;
 }
 
+//Restarting function
 function confirmRestart(){
     let answear = confirm('Do you want to restart?');
     if (answear == true){
@@ -88,18 +89,18 @@ function confirmRestart(){
             choicesPar.textContent = ``;
             winnerPar.textContent = ``;
             resultPar.textContent = ``;
-            buttons.forEach((button) => {
-                button.removeEventListener('click', () => {
-                    playerPlay = button.value;
-                    game(playerPlay);
-              });
-            });
-
     }
     else {
-        choicesPar.textContent = `Well then, thanks for playing! If you change your mind, refresh the page!`;
+        choicesPar.textContent = `Well then, thanks for playing! If you change your mind, click one of the option buttons!`;
+        buttons.forEach((button) => {
+            button.removeEventListener('click', () => {
+                playerPlay = button.value;
+                game(playerPlay);
+          });
+        });
     }
 }
+
 
 //Actual game function
 function game(playerPlay){
@@ -113,7 +114,6 @@ function game(playerPlay){
 }
 
 //On click play
-
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         playerPlay = button.value;
